@@ -1,25 +1,24 @@
 # how-they-market
 
-A Claude Code agent that researches how companies market themselves. Fast, web-search-only approach.
+A Claude Code agent that researches how companies and creators market themselves. Produces a narrative analysis — not just what channels they use, but how the pieces fit together.
 
 ## What It Does
 
-Give it a company name and it produces a compact marketing analysis:
+Give it a company or creator and it produces a structured marketing analysis:
 
-- **Positioning** — How they describe themselves, target audience, differentiator
-- **Channels** — Where they publish (Twitter, LinkedIn, YouTube, blog)
-- **Community** — HN mentions/sentiment, Reddit presence
-- **Tactics** — 2-3 specific strategies worth learning from
-- **Gaps & Next** — What couldn't be researched, follow-up directions
+- **The Model** — How their distribution, content, and monetization connect as a flywheel
+- **Channels** — Where they publish and what role each channel plays
+- **Content Strategy** — Cadence, formats, hook patterns, with actual quoted examples
+- **Monetization** — Products, prices, launch mechanics, revenue figures where findable
+- **Evolution** — What changed over time, what was abandoned, where they're heading
+- **Key Tactics** — Named mechanisms with specific examples
+- **What to Steal** — Transferable principles someone else could apply directly
 
 ## Installation
 
 ```bash
-# Clone this repo
 git clone https://github.com/j1ngg/how-they-market.git
 cd how-they-market
-
-# Run Claude Code from within this directory
 claude
 ```
 
@@ -28,7 +27,7 @@ No Python dependencies. No API keys. Just Claude Code.
 ## Usage
 
 ```
-Analyze how [company] markets
+Analyze how [company or person] markets
 ```
 
 ### Examples
@@ -45,35 +44,59 @@ Research Linear's marketing strategy
 How does Resend market itself?
 ```
 
-## Output Format
-
 ```
-**{Company}: Marketing Analysis** | {Date}
-
-**Positioning:** {one-liner} → {audience} → {differentiator}
-
-**Channels:**
-| Channel | Link | Active | Notes |
-|---------|------|--------|-------|
-| Website | | | |
-| Twitter | | | |
-| ... | | | |
-
-**Community:** HN: {summary} | Reddit: {summary}
-
-**Tactics:**
-- {tactic}: {description} [link]
-
-**Gaps:** {gaps} | **Next:** {follow-up}
+Analyze how @levelsio markets
 ```
 
 ## How It Works
 
-1. Runs parallel web searches (HN, Reddit, general marketing coverage)
-2. Fetches company homepage for positioning
-3. Outputs compact report (~300-400 words)
+The agent runs in three research rounds before writing:
 
-No scripts, no APIs, no dependencies beyond Claude Code.
+1. **Discovery** — 10 parallel web searches tailored to whether the target is a solo creator or a company
+2. **Primary source fetching** — Fetches the 5 most promising sources in full (interviews, third-party breakdowns, their own posts) rather than summarizing search snippets
+3. **Follow-up** — Up to 3 targeted searches to chase specific leads or fill gaps
+
+Then it identifies the strategic model before writing — how the channels, content, and monetization connect — and leads the report with that synthesis.
+
+## Output Format
+
+```
+### [Target]: Marketing Analysis
+Type: [Creator / Company] | Date: [Date]
+
+### Who They Are
+Why their marketing is worth studying.
+
+### The Model
+How distribution → trust → conversion connects. Named and explained.
+
+### Channels
+| Channel | Link | Activity | Role in the Model |
+
+### Content Strategy
+Cadence, formats, hook patterns with actual quoted examples.
+
+### Monetization
+Products, prices, launch mechanics, revenue figures.
+
+### Evolution
+What changed, what was abandoned, where they're heading.
+
+### Voice & Tone
+What makes them sound different, with quoted examples.
+
+### Community Presence
+HN and Reddit — presence, sentiment, notable discussions.
+
+### Key Tactics
+Named mechanisms with specific examples and why they work.
+
+### What to Steal
+Transferable principles written as named, actionable patterns.
+
+### Gaps & Sources
+What was blocked or paywalled, and where to look next.
+```
 
 ## License
 
