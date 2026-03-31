@@ -10,6 +10,7 @@ env/
 
 # Output files
 output/*.json
+analyses/
 
 # OS
 .DS_Store
